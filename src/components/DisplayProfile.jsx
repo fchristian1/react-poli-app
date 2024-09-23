@@ -13,16 +13,34 @@
 
 
 */
-function DisplayProfile({ profile }) {
+function DisplayProfile({ profiles }) {
     return (
-        <div style={{ border: "2px solid green", width: "100%", height: "200px", marginBottom: "16px" }}>
-            Display Profile
-            <p>{profile?.name}</p>
-            <p>{profile?.country}</p>
-            <p>{profile?.position}</p>
-            <p>{profile?.biography}</p>
+        <div
+            style={{
+                border: "2px solid green",
+                width: "100%",
+                marginBottom: "16px",
+            }}
+        >
+            <h3>{profiles.length > 1 ? "Profiles" : "Profile"}</h3>
+            {profiles.map((element, index) => (
+                <>
+                    <div
+                        style={{ border: "1px solid lightgray" }}
+                        key={element.id}
+                    >
+                        <div>
+                            <p>{element?.name}</p>
+                            <p>{element?.country}</p>
+                            <p>{element?.position}</p>
+                            <p>{element?.biography}</p>
+                        </div>
+                    </div>
+                </>
+            ))}
+            {profiles.length === 0 && <p>No profiles found</p>}
         </div>
-    )
+    );
 }
 
-export default DisplayProfile
+export default DisplayProfile;
